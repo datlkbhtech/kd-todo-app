@@ -8,32 +8,25 @@ import TodoItem from "./components/TodoItem";
 function App() {
   const [todos, setTodos] = useState([]);
   const [tasknumber, setTasknumber] = useState(0);
-  // console.log("🚀 ~ file: App.js ~ line 11 ~ App ~ tasknumber", tasknumber)
   const [taskOpen, setTaskOpen] = useState(0);
   const [taskComlete, setTaskComlete] = useState(0)
-
 
   const addTodo = useCallback(text => {
     if (!text || /^\s*$/.test(text)) {
       alert('Can\'t add empty todo');
       return;
     }
-    let id = Math.floor(Math.random() * 10000);
-    let todo = { id: id, text: text, completed: false, important: false }
-    let newTodos = [todo, ...todos];
+    const id = Math.floor(Math.random() * 10000);
+    const todo = { id: id, text: text, completed: false, important: false }
+    const newTodos = [todo, ...todos];
     setTodos(newTodos);
     setTasknumber((prev) => prev + 1);
-
-
-
   }, [todos]);
 
   useMemo(() => {
-    let completedTask = todos.filter(props => props.completed).length
-    console.log("🚀 ~ file: App.js ~ line 33 ~ useMemo ~ completedTask", completedTask)
+    const completedTask = todos.filter(props => props.completed).length
     setTaskComlete(completedTask);
-    let taskopen = tasknumber - completedTask;
-    console.log("🚀 ~ file: App.js ~ line 30 ~ App ~ tasknumber", tasknumber)
+    const taskopen = tasknumber - completedTask;
     setTaskOpen(taskopen);
   }, [todos, tasknumber])
 
@@ -44,21 +37,21 @@ function App() {
   }, [todos]);
 
   const completeTodo = useCallback(id => {
-    let updatedTodos = todos.map((todo) => {
+    const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed
       }
       return todo;
     })
     setTodos(updatedTodos);
-    let completedTask = todos.filter(props => props.completed).length
+    const completedTask = todos.filter(props => props.completed).length
     setTaskComlete(completedTask);
-    let taskopen = tasknumber - completedTask;
+    const taskopen = tasknumber - completedTask;
     setTaskOpen(taskopen);
   }, [todos, tasknumber]);
 
   const importantTodo = (id) => {
-    let updatedTodos = todos.map((todo) => {
+    const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.important = !todo.important
       }
@@ -66,6 +59,7 @@ function App() {
     })
     setTodos(updatedTodos)
   }
+  
   return (
     <div className="bg-slate-300">
       <div className="flex flex-col container w-4/6 mx-auto md:pt-8">
