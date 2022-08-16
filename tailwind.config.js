@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "form-header": "url('/src/assets/images/header-day.1565fc4e.jpg')"
+      }
+    },
   },
   plugins: [],
 }

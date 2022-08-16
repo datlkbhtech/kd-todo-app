@@ -1,30 +1,46 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "./App.css";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-// import TodoList from "./Components/TodoList";
-import TodoForm from "./Components/TodoForm";
-import TodoItem from "./Components/TodoItem";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [tasknumber, setTasknumber] = useState(0);
+  // console.log("🚀 ~ file: App.js ~ line 11 ~ App ~ tasknumber", tasknumber)
+  const [taskOpen, setTaskOpen] = useState(0);
+  const [taskComlete, setTaskComlete] = useState(0)
 
-  const addTodo = (text) => {
+
+  const addTodo = useCallback(text => {
     if (!text || /^\s*$/.test(text)) {
+      alert('Can\'t add empty todo');
       return;
     }
-    let id = 1;
-    if (todos.length > 0) {
-      id = todos[0].id + 1
-    }
+    let id = Math.floor(Math.random() * 10000);
     let todo = { id: id, text: text, completed: false, important: false }
-    let newTodos = [todo, ...todos]
-    setTodos(newTodos)
-  };
+    let newTodos = [todo, ...todos];
+    setTodos(newTodos);
+    setTasknumber((prev) => prev + 1);
 
-    const removeTodo = useCallback(id => {
+
+
+  }, [todos]);
+
+  useMemo(() => {
+    let completedTask = todos.filter(props => props.completed).length
+    console.log("🚀 ~ file: App.js ~ line 33 ~ useMemo ~ completedTask", completedTask)
+    setTaskComlete(completedTask);
+    let taskopen = tasknumber - completedTask;
+    console.log("🚀 ~ file: App.js ~ line 30 ~ App ~ tasknumber", tasknumber)
+    setTaskOpen(taskopen);
+  }, [todos, tasknumber])
+
+  const removeTodo = useCallback(id => {
     const data = todos.filter(item => item.id !== id);
     setTodos(data);
+    setTasknumber((prev) => prev - 1);
   }, [todos]);
 
   const completeTodo = useCallback(id => {
@@ -32,10 +48,14 @@ function App() {
       if (todo.id === id) {
         todo.completed = !todo.completed
       }
-      return todo
+      return todo;
     })
-    setTodos(updatedTodos)
-  }, [todos]);
+    setTodos(updatedTodos);
+    let completedTask = todos.filter(props => props.completed).length
+    setTaskComlete(completedTask);
+    let taskopen = tasknumber - completedTask;
+    setTaskOpen(taskopen);
+  }, [todos, tasknumber]);
 
   const importantTodo = (id) => {
     let updatedTodos = todos.map((todo) => {
@@ -52,21 +72,23 @@ function App() {
         <section>
           <div className="flex flex-col bg-gray-200 shadow-lg">
             <Header />
-            <div className="addTodo mx-4 mt-6">
+            <div className="add-todo mx-4 mt-6">
               <TodoForm addTodo={addTodo} />
             </div>
             <div className="mx-4 my-6 h-96 overflow-auto">
-              {todos.map((todo) => {
-                return (
-                  <TodoItem removeTodo={removeTodo} completeTodo={completeTodo} importantTodo={importantTodo} todo={todo} key={todo.id} />
-                )
-              })}
-              <p className="caught-up my-16 text-lg text-center text-gray-500" >You're all caught up!</p>
+              <ul>
+                {todos.map((todo) => {
+                  return (
+                    <TodoItem removeTodo={removeTodo} completeTodo={completeTodo} importantTodo={importantTodo} todo={todo} key={todo.id} />
+                  )
+                })}
+              </ul>
+              {!tasknumber && (<p className="caught-up my-16 text-lg text-center text-gray-500" >You're all caught up!</p>)}
             </div>
             <div className="px-4 h-12 text-sm bg-gray-300 border-t border-gray-400 flex flex-wrap items-center text-gray-600">
-              <p className="flex-1 order-1"> tasks</p>
-              <p className="flex-1 order-2 text-center" >0 complete</p>
-              <p className="flex-1 order-last text-right" >0 open</p>
+              <p className="flex-1 order-1">{tasknumber} tasks</p>
+              <p className="flex-1 order-2 text-center" >{taskComlete} complete</p>
+              <p className="flex-1 order-last text-right" >{taskOpen} open</p>
             </div>
           </div>
         </section>

@@ -1,14 +1,10 @@
 import React from 'react';
-// import { useEffect } from 'react';
 
-// function Header({ onChange }) {
 function Header() {
   const d = new Date();
   const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  // useEffect(() => {
-  //   onChange("dsadsad")
-  // }, [onChange])
+
   return (
     <header className="bg-todo-header-day bg-cover bg-center border-b-1 border-gray-300 px-4 py-6" >
       <h2 class="text-2xl text-white" >{weekday[d.getDay()]}, {d.getDate()}th</h2>
