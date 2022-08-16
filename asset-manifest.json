@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/kd-todo-app/static/css/main.56fe1fea.css",
-    "main.js": "/kd-todo-app/static/js/main.7d83dd68.js",
+    "main.css": "/kd-todo-app/static/css/main.d47ee6cc.css",
+    "main.js": "/kd-todo-app/static/js/main.48eb019c.js",
     "static/js/787.49a24391.chunk.js": "/kd-todo-app/static/js/787.49a24391.chunk.js",
     "static/media/header-day.1565fc4e.jpg": "/kd-todo-app/static/media/header-day.1565fc4e.1565fc4e05bc12a8da4d.jpg",
     "index.html": "/kd-todo-app/index.html",
-    "main.56fe1fea.css.map": "/kd-todo-app/static/css/main.56fe1fea.css.map",
-    "main.7d83dd68.js.map": "/kd-todo-app/static/js/main.7d83dd68.js.map",
+    "main.d47ee6cc.css.map": "/kd-todo-app/static/css/main.d47ee6cc.css.map",
+    "main.48eb019c.js.map": "/kd-todo-app/static/js/main.48eb019c.js.map",
     "787.49a24391.chunk.js.map": "/kd-todo-app/static/js/787.49a24391.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.56fe1fea.css",
-    "static/js/main.7d83dd68.js"
+    "static/css/main.d47ee6cc.css",
+    "static/js/main.48eb019c.js"
   ]
 }
