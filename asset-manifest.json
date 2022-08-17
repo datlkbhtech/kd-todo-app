@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/kd-todo-app/static/css/main.daa16ed7.css",
-    "main.js": "/kd-todo-app/static/js/main.f2c2848a.js",
+    "main.js": "/kd-todo-app/static/js/main.9f750759.js",
     "static/js/787.49a24391.chunk.js": "/kd-todo-app/static/js/787.49a24391.chunk.js",
     "static/media/header-day.1565fc4e.jpg": "/kd-todo-app/static/media/header-day.1565fc4e.1565fc4e05bc12a8da4d.jpg",
     "index.html": "/kd-todo-app/index.html",
     "main.daa16ed7.css.map": "/kd-todo-app/static/css/main.daa16ed7.css.map",
-    "main.f2c2848a.js.map": "/kd-todo-app/static/js/main.f2c2848a.js.map",
+    "main.9f750759.js.map": "/kd-todo-app/static/js/main.9f750759.js.map",
     "787.49a24391.chunk.js.map": "/kd-todo-app/static/js/787.49a24391.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.daa16ed7.css",
-    "static/js/main.f2c2848a.js"
+    "static/js/main.9f750759.js"
   ]
 }
