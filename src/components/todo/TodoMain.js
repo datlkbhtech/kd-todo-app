@@ -12,7 +12,7 @@ const TodoMain = () => {
 
   const addTodo = useCallback(text => {
     if (!text || /(\B(\?\?|\?)|\B(!!|!)|\B(\[\])|\b(RWC)|\b(TODO))[:;.,-]?\d*($|\s.*$|\(.*$)/gmi.test(text)) {
-      setErrorMessage('Can\'t add empty todo!');
+      setErrorMessage('Invalid todo!');
       return;
     }
     else
