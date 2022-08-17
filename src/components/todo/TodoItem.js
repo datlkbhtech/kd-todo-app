@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-function TodoItem({ todo, removeTodo, completeTodo, importantTodo }) {
+const TodoItem=({ todo, removeTodo, completeTodo, importantTodo })=> {
   return (
     <li className={todo.completed ? " complete" : ""} style={todo.important ? { background: "orange" } : {}}>
       <div className="icon-container flex justify-between items-center space-x-1 py-1.5 px-2  border-b border-gray-300 transition duration-300 ease-in no-underline text-gray-800">
@@ -20,4 +20,4 @@ function TodoItem({ todo, removeTodo, completeTodo, importantTodo }) {
     </li>
   )
 }
-export default TodoItem;
+export default memo(TodoItem);

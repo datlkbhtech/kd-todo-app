@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-function Header() {
+const Header=()=> {
   const d = new Date();
   const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -13,4 +13,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

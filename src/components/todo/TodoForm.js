@@ -1,10 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 
 
 const TodoForm = ({ addTodo }) => {
-
   const [input, setInput] = useState("");
-
   const handleSubmit = useCallback(e => {
     e.preventDefault();
     addTodo(input);
@@ -29,4 +27,4 @@ const TodoForm = ({ addTodo }) => {
   );
 }
 
-export default TodoForm;
+export default memo(TodoForm);
